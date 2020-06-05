@@ -1,0 +1,28 @@
+.tic-tac-toe-tile {
+	font-size: 30vw;
+	line-height: 33vw;
+	margin: auto 0;
+	text-align: center;
+	width: 33.333%;
+
+	&.ttt-X {
+		color: red;
+	}
+
+	&.ttt-O {
+		color: black;
+	}
+
+	&.ttt-col-1, &.ttt-col-2 {
+		border-left: black solid 1vw;
+	
+		@media (min-width: 100vh) {
+			border-left: black solid 1vh;
+		}
+	}
+
+	@media (min-width: 100vh) {
+		font-size: 30vh;
+		line-height: 33vh;
+	}
+}

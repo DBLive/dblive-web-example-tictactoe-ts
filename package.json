@@ -1,0 +1,41 @@
+{
+  "name": "@dblive/client-js-example",
+  "version": "0.0.1-dev.1",
+  "description": "This is an example using the DBLive JS Client library.",
+  "main": "./src/index.ts",
+  "scripts": {
+    "scss": "node-sass src/scss -o src",
+    "scss:watch": "node-sass --watch src/scss -o src",
+    "start": "react-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mike Richards",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@dblive/client-js": "0.0.1-dev.11",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "bootstrap": "^4.5.0",
+    "node-sass": "^4.14.1",
+    "react-scripts": "^3.4.1",
+    "source-map-loader": "^1.0.0",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

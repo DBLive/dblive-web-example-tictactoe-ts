@@ -1,2 +1,2 @@
-# dblive-web-example-tictactoe-ts
-Web example of DBLive using the TS/JS/Node client.
+# DBLive TS/JS/Node Example
+Web example using DBLive to play Tic-Tac-Toe with another player.
