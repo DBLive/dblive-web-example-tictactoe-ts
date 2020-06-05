@@ -1,8 +1,6 @@
 import * as React from "react"
-import { DBLiveClient, DBLiveLogger, DBLiveLoggerLevel } from "@dblive/client-js"
+import { DBLiveClient } from "@dblive/client-js"
 import { TicTacToeBoardComponent } from "./components/tictactoe.board.component"
-
-DBLiveLogger.logLevel = DBLiveLoggerLevel.debug
 
 export class App extends React.Component
 {
@@ -11,6 +9,7 @@ export class App extends React.Component
 	render() {
         return (
 			<div className="app">
+				<h1>DBLive Example</h1>
 				<TicTacToeBoardComponent dbLive={this.dbLive} />
 			</div>
 		)

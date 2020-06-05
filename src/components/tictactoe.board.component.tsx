@@ -63,23 +63,34 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 		const board = this.state.board
 
 		return (
-			<div className="tic-tac-toe-board-container">
-				<div className="tic-tac-toe-board">
-					{board.map((row, rowIndex) =>
-						<div key={`row-${rowIndex}`} className={`row ttt-row-${rowIndex}`}>
-							{row.map((value, columnIndex) =>
-								<TicTacToeTileComponent key={`tile-${rowIndex}-${columnIndex}`} column={columnIndex} dbLive={this.dbLive} row={rowIndex} value={value} onTileClick={() => this.onTileClicked(rowIndex, columnIndex)} />
-							)}
-						</div>
-					)}
+			<React.Fragment>
+				<button className="new-game-button" onClick={() => this.onNewGameClicked()}>New Game</button>
+				<div className="tic-tac-toe-board-container">
+					<div className="tic-tac-toe-board">
+						{board.map((row, rowIndex) =>
+							<div key={`row-${rowIndex}`} className={`row ttt-row-${rowIndex}`}>
+								{row.map((value, columnIndex) =>
+									<TicTacToeTileComponent key={`tile-${rowIndex}-${columnIndex}`} column={columnIndex} dbLive={this.dbLive} row={rowIndex} value={value} onTileClick={() => this.onTileClicked(rowIndex, columnIndex)} />
+								)}
+							</div>
+						)}
+					</div>
 				</div>
-			</div>
+			</React.Fragment>
 		)
 	}
 
-	private onTileClicked(row: number, column: number) {
-		console.log(`onTileClicked(${row}, ${column})`)
+	private onNewGameClicked() {
+		this.dbLive.set("tic-tac-toe-example", {
+			board: [
+				[" ", " ", " "],
+				[" ", " ", " "],
+				[" ", " ", " "],
+			]
+		})
+	}
 
+	private onTileClicked(row: number, column: number) {
 		const board = this.state.board,
 			nextMove = this.state.nextMove
 
@@ -91,6 +102,7 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 
 			if (value !== "X" && value !== "O") {
 				board[row][column] = nextMove
+				
 				this.dbLive.set("tic-tac-toe-example", {
 					board
 				})
