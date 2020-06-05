@@ -4,6 +4,10 @@
   "description": "This is an example using the DBLive JS Client library.",
   "main": "./src/index.ts",
   "scripts": {
+    "build": "react-scripts build",
+    "clearbuild": "rm -r -f build",
+    "deploy:prod": "aws s3 sync build/ s3://tictactoe.dblive.io/ --delete --acl public-read --profile mike && aws cloudfront create-invalidation --distribution-id E1QUVLFQ197JC6 --profile mike --paths / \"/*\"",
+    "predeploy:prod": "npm run build",
     "scss": "node-sass src/scss -o src",
     "scss:watch": "node-sass --watch src/scss -o src",
     "start": "react-scripts start",
@@ -12,7 +16,7 @@
   "author": "Mike Richards",
   "license": "UNLICENSED",
   "dependencies": {
-    "@dblive/client-js": "0.0.1-dev.11",
+    "@dblive/client-js": "0.0.1-dev.12",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
