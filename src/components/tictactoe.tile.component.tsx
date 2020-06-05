@@ -1,5 +1,5 @@
 import * as React from "react"
-import { DBLiveClient } from "@dblive/client-js";
+import { DBLiveClient } from "@dblive/client-js"
 
 interface TicTacToeTileParams {
 	column: number

@@ -1,8 +1,8 @@
 import * as React from "react"
-import { DBLiveClient, DBLiveKeyEventListener } from "@dblive/client-js";
-import { TicTacToeBoard } from "../common/tictactoe.board";
-import { TicTacToeJsonExample } from "../common/tictactoe.jsonexample";
-import { TicTacToeTileComponent } from "./tictactoe.tile.component";
+import { DBLiveClient, DBLiveKeyEventListener } from "@dblive/client-js"
+import { TicTacToeBoard } from "../common/tictactoe.board"
+import { TicTacToeJsonExample } from "../common/tictactoe.jsonexample"
+import { TicTacToeTileComponent } from "./tictactoe.tile.component"
 
 interface TicTacToeBoardComponentParams {
 	dbLive: DBLiveClient
