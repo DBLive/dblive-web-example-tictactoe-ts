@@ -15,6 +15,10 @@
     "start": "react-scripts start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DBLive/dblive-web-example-tictactoe-ts.git"
+  },
   "author": "Mike Richards",
   "license": "UNLICENSED",
   "dependencies": {
