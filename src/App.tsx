@@ -6,14 +6,14 @@ DBLiveLogger.logLevel = DBLiveLoggerLevel.debug
 
 export class App extends React.Component
 {
-	private dbLive = new DBLiveClient("+EzwYKZrXI7eKn/KRtlhURsGsjyP2e+1++vqTDQH")
+	private readonly dbLive = new DBLiveClient("+EzwYKZrXI7eKn/KRtlhURsGsjyP2e+1++vqTDQH")
 
 	render() {
-        return (
+		return (
 			<div className="app">
 				<h1>DBLive Example</h1>
 				<TicTacToeBoardComponent dbLive={this.dbLive} />
 			</div>
 		)
-    }
+	}
 }
