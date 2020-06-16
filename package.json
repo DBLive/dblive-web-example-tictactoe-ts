@@ -22,19 +22,19 @@
   "author": "Mike Richards",
   "license": "UNLICENSED",
   "dependencies": {
-    "@dblive/client-js": "0.0.1-dev.15",
+    "@dblive/client-js": "0.0.1-dev.17",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@types/react": "^16.9.35",
+    "@types/react": "^16.9.36",
     "@types/react-dom": "^16.9.8",
     "bootstrap": "^4.5.0",
     "node-sass": "^4.14.1",
     "react-scripts": "^3.4.1",
     "source-map-loader": "^1.0.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.5"
   },
   "browserslist": {
     "production": [
