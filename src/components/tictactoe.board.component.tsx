@@ -25,7 +25,7 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 
 	componentDidMount() {
 		this.keyListener = this.dbLive.getJsonAndListen<TicTacToeJsonExample>("tic-tac-toe-example", value => {
-			const board = (value && value.board) || []
+			const board = (value.value && value.value.board) || []
 
 			let xCount = 0,
 				oCount = 0
