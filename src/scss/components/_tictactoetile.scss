@@ -1,16 +1,50 @@
 .tic-tac-toe-tile {
+	color: white;
 	font-size: 19vw;
-	line-height: 22.6vw;
+	line-height: 22.7vw;
 	margin: auto 0;
 	text-align: center;
 	width: 33.333%;
 
+	@media (min-width: 100vh) {
+		font-size: 19vh;
+		line-height: 22.7vh;
+	}
+
 	&.ttt-X {
 		color: red;
+
+		&.ttt-win {
+			font-size: 25vw;
+			transition: font-size 1s;
+
+			@media (min-width: 100vh) {
+				font-size: 25vh;
+			}		
+		}
+
+		&.ttt-loss {
+			transition: color 2s;
+			color: rgba(255, 0, 0, 0.3)
+		}
 	}
 
 	&.ttt-O {
 		color: black;
+
+		&.ttt-win {
+			font-size: 25vw;
+			transition: font-size 1s;
+
+			@media (min-width: 100vh) {
+				font-size: 25vh;
+			}		
+		}
+
+		&.ttt-loss {
+			color: rgba(0, 0, 0, 0.3);
+			transition: color 2s;
+		}
 	}
 
 	&.ttt-col-1, &.ttt-col-2 {
@@ -19,10 +53,5 @@
 		@media (min-width: 100vh) {
 			border-left: black solid 0.75vh;
 		}
-	}
-
-	@media (min-width: 100vh) {
-		font-size: 19vh;
-		line-height: 22.6vh;
 	}
 }

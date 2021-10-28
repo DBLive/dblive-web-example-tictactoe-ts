@@ -11,6 +11,7 @@ interface TicTacToeBoardComponentParams {
 interface TicTacToeBoardComponentState {
 	board: TicTacToeBoard
 	nextMove: "X"|"O"|" "
+	winningTiles?: boolean[][]
 }
 
 export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardComponentParams, TicTacToeBoardComponentState>
@@ -50,7 +51,8 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 
 			this.setState({
 				board,
-				nextMove: xCount > oCount ? "O" : "X"
+				nextMove: xCount > oCount ? "O" : "X",
+				winningTiles: this.checkForWin(board),
 			})
 		})
 	}
@@ -60,7 +62,8 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 	}
 
 	render() {
-		const board = this.state.board
+		const board = this.state.board,
+			winningTiles = this.state.winningTiles
 
 		return (
 			<React.Fragment>
@@ -70,7 +73,15 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 						{board.map((row, rowIndex) =>
 							<div key={`row-${rowIndex}`} className={`row ttt-row-${rowIndex}`}>
 								{row.map((value, columnIndex) =>
-									<TicTacToeTileComponent key={`tile-${rowIndex}-${columnIndex}`} column={columnIndex} dbLive={this.dbLive} row={rowIndex} value={value} onTileClick={() => this.onTileClicked(rowIndex, columnIndex)} />
+									<TicTacToeTileComponent
+										column={columnIndex}
+										dbLive={this.dbLive}
+										key={`tile-${rowIndex}-${columnIndex}`}
+										onTileClick={() => this.onTileClicked(rowIndex, columnIndex)}
+										row={rowIndex}
+										value={value}
+										winLoss={winningTiles && winningTiles[rowIndex][columnIndex]}
+									/>
 								)}
 							</div>
 						)}
@@ -80,7 +91,89 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 		)
 	}
 
-	private onNewGameClicked() {
+	private checkForWin(board: TicTacToeBoard): boolean[][]|undefined {
+		let winningTiles: boolean[][]|undefined
+
+		for (let row = 0; row < 3; row++) {
+			if (
+				(board[row][0] === "X" || board[row][0] === "O") &&
+				board[row][1] === board[row][0] &&
+				board[row][2] === board[row][0]
+			) {
+				winningTiles = []
+
+				for (let tileRow = 0; tileRow < 3; tileRow++) {
+					winningTiles.push([])
+					
+					for (let tileCol = 0; tileCol < 3; tileCol++) {
+						winningTiles[tileRow].push(tileRow === row)
+					}
+				}
+
+				return winningTiles
+			}
+		}
+
+		for (let col = 0; col < 3; col++) {
+			if (
+				(board[0][col] === "X" || board[0][col] === "O") &&
+				board[1][col] === board[0][col] &&
+				board[2][col] === board[0][col]
+			) {
+				winningTiles = []
+
+				for (let tileRow = 0; tileRow < 3; tileRow++) {
+					winningTiles.push([])
+					
+					for (let tileCol = 0; tileCol < 3; tileCol++) {
+						winningTiles[tileRow].push(tileCol === col)
+					}
+				}
+
+				return winningTiles
+			}
+		}
+
+		if (
+			(board[0][0] === "X" || board[0][0] === "O") &&
+			board[1][1] === board[0][0] &&
+			board[2][2] === board[0][0]
+		) {
+			winningTiles = []
+
+			for (let tileRow = 0; tileRow < 3; tileRow++) {
+				winningTiles.push([])
+				
+				for (let tileCol = 0; tileCol < 3; tileCol++) {
+					winningTiles[tileRow].push(tileCol === tileRow)
+				}
+			}
+
+			return winningTiles
+		}
+		
+		if (
+			(board[0][2] === "X" || board[0][2] === "O") &&
+			board[1][1] === board[0][2] &&
+			board[2][0] === board[0][2]
+		) {
+			winningTiles = []
+
+			for (let tileRow = 0; tileRow < 3; tileRow++) {
+				winningTiles.push([])
+				
+				for (let tileCol = 0; tileCol < 3; tileCol++) {
+					winningTiles[tileRow].push(tileCol === (2 - tileRow))
+				}
+			}
+
+			return winningTiles
+		}
+
+		return undefined
+	}
+
+	private onNewGameClicked(): void {
 		this.dbLive.set("tic-tac-toe-example", {
 			board: [
 				[" ", " ", " "],
@@ -90,7 +183,7 @@ export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardCompo
 		})
 	}
 
-	private onTileClicked(row: number, column: number) {
+	private onTileClicked(row: number, column: number): void {
 		const board = this.state.board,
 			nextMove = this.state.nextMove
 
