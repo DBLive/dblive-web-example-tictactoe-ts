@@ -6,7 +6,7 @@
   "scripts": {
     "build": "react-scripts build",
     "clearbuild": "rm -r -f build",
-    "deploy:prod": "aws s3 sync build/ s3://tictactoe.dblive.io/ --delete --acl public-read --profile mike && aws cloudfront create-invalidation --distribution-id E1QUVLFQ197JC6 --profile mike --paths \"/\" \"/service-worker.js\" \"index.html\" \"asset-manifest.json\"",
+    "deploy:prod": "aws s3 sync build/ s3://tictactoe.dblive.io/ --delete --acl public-read --profile mike && aws cloudfront create-invalidation --distribution-id E1QUVLFQ197JC6 --profile mike --paths \"/\" \"/service-worker.js\" \"/index.html\" \"/asset-manifest.json\"",
     "prebuild": "npm run scss",
     "predeploy:prod": "npm run build",
     "prestart": "npm run scss",
