@@ -16,7 +16,7 @@ interface TicTacToeBoardComponentState {
 
 export class TicTacToeBoardComponent extends React.Component<TicTacToeBoardComponentParams, TicTacToeBoardComponentState>
 {
-	private keyListener!: DBLiveKeyEventListener
+	private keyListener!: DBLiveKeyEventListener<TicTacToeJsonExample>
 	private readonly dbLive = this.props.dbLive
 
 	state: TicTacToeBoardComponentState = {
